@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AgriHelp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        DataContext="{Binding Path=ViewModel, RelativeSource={RelativeSource Self}}"
+        Title="AgriHelp" Height="100" Width="300">
     <Grid>
-        
+        <Menu>
+            <MenuItem Header="_Culturi" FontSize="14">
+                <MenuItem Header="_Adauga inputuri" Click="AddInput"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>
