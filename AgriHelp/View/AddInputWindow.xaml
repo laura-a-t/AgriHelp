@@ -6,22 +6,57 @@
              xmlns:local="clr-namespace:AgriHelp.View"
              mc:Ignorable="d"
              DataContext="{Binding Path=ViewModel, RelativeSource={RelativeSource Self}}"
-             Height="300" Width="500">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Tip cultura:" Margin="5"/>
-        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding AvailableCrops}" SelectedItem="{Binding SelectedCrop}" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="{Binding SeedQtyLabel}"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SeedQty}" VerticalContentAlignment="Center"/>
-        <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Tip sol"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding SoilTypes}" SelectedItem="{Binding SelectedSoilType}" VerticalContentAlignment="Center"/>
-    </Grid>
+             Height="380" Width="500">
+    <StackPanel Orientation="Vertical">
+        <GroupBox>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="Tip cultura:" Margin="5"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" ItemsSource="{Binding AvailableCrops}" SelectedItem="{Binding SelectedCrop}" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="{Binding SeedQtyLabel}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding SeedQty}" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Tip sol"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" Margin="5" ItemsSource="{Binding SoilTypes}" SelectedItem="{Binding SelectedSoilType}" VerticalContentAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Ingrasaminte">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="5" Content="Azot (N) kg"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Text="{Binding QtyN}" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="5" Content="Fosfor (P) kg"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Text="{Binding QtyP}" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="0" Margin="5" Content="Potasiu (K) kg"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Text="{Binding QtyK}" VerticalContentAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="0" Margin="5" Content="Microelemente kg"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Text="{Binding QtyMicroelements}" VerticalContentAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+        <Grid Margin="0, 20,0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Width="100" Content="Anuleaza"/>
+            <Button Grid.Column="1" Width="100" Content="Salveaza"/>
+        </Grid>
+    </StackPanel>
 </Window>

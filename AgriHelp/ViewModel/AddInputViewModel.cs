@@ -38,6 +38,38 @@ namespace AgriHelp.ViewModel
         }
         
         public string SeedQtyLabel => "Cantitate samanta " + (string.IsNullOrEmpty(SelectedCrop) ? string.Empty : $"de {SelectedCrop} ") + "kg/ha";
+
+        private double _qtyN;
+
+        public double QtyN
+        {
+            get => _qtyN;
+            set => SetValue(ref _qtyN, value);
+        }
+
+        private double _qtyP;
+
+        public double QtyP
+        {
+            get => _qtyP;
+            set => SetValue(ref _qtyP, value);
+        }
+
+        private double _qtyK;
+
+        public double QtyK
+        {
+            get => _qtyK;
+            set => SetValue(ref _qtyK, value);
+        }
+
+        private double _qtyMicroelements;
+
+        public double QtyMicroelements
+        {
+            get => _qtyMicroelements;
+            set => SetValue(ref _qtyMicroelements, value);
+        }
         
         public AddInputViewModel()
         {
