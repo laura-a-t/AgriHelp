@@ -55,8 +55,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Width="100" Content="Anuleaza"/>
-            <Button Grid.Column="1" Width="100" Content="Salveaza"/>
+            <Button Grid.Column="0" Width="100" Content="Anuleaza" Click="OnCancel"/>
+            <Button Grid.Column="1" Width="100" Content="Salveaza" Click="OnSave"/>
         </Grid>
     </StackPanel>
 </Window>

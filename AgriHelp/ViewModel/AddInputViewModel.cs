@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.Windows.Input;
+using AgriHelp.Database;
 using DevExpress.Mvvm;
 
 namespace AgriHelp.ViewModel
 {
     public class AddInputViewModel : ViewModelBase
     {
+        private Manager _dbManager;
         public List<string> AvailableCrops { get; }
 
         private string _selectedCrop;
@@ -71,10 +74,16 @@ namespace AgriHelp.ViewModel
             set => SetValue(ref _qtyMicroelements, value);
         }
         
-        public AddInputViewModel()
+        public AddInputViewModel(Manager dbManager)
         {
             AvailableCrops = new List<string> { "Porumb", "Grau", "Orz" };
             SoilTypes = new List<string> { "Acid", "Neutru", "Alcalin" };
+            _dbManager = dbManager;
+        }
+
+        public void Save()
+        {
+            _dbManager.InsertInputs(SelectedCrop, SeedQty, SelectedSoilType, QtyN, QtyP, QtyK, QtyMicroelements);
         }
     }
 }

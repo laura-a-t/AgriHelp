@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows;
+using AgriHelp.Database;
 using AgriHelp.View;
 using AgriHelp.ViewModel;
 
@@ -10,12 +11,16 @@ namespace AgriHelp
     /// </summary>
     public partial class MainWindow
     {
+        private Manager _dbManager;
         public MainWindowViewModel ViewModel { get; }
         public MainWindow()
         {
             InitializeComponent();
 
             ViewModel = new MainWindowViewModel();
+
+            _dbManager = new Manager();
+            _dbManager.Init();
         }
 
         private void AddInput(object sender, RoutedEventArgs e)
@@ -27,7 +32,7 @@ namespace AgriHelp
                 return;
             }
 
-            var inputWindow = new AddInputWindow();
+            var inputWindow = new AddInputWindow(_dbManager);
             Closing += (o, args) =>
             {
                 inputWindow.Close();
