@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:AgriHelp"
         mc:Ignorable="d"
         DataContext="{Binding Path=ViewModel, RelativeSource={RelativeSource Self}}"
-        Title="AgriHelp" Height="100" Width="300">
-    <Grid>
+        Title="AgriHelp" MinHeight="100" MinWidth="300">
+    <StackPanel Orientation="Vertical">
         <Menu>
             <MenuItem Header="_Culturi" FontSize="14">
                 <MenuItem Header="_Adauga inputuri" Click="AddInput"/>
             </MenuItem>
         </Menu>
-    </Grid>
+        <DataGrid>
+        </DataGrid>
+    </StackPanel>
 </Window>
