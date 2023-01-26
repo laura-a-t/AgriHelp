@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using AgriHelp.ViewModel;
+
 namespace AgriHelp.Database
 {
     using System.Data.SQLite;
@@ -24,6 +28,33 @@ namespace AgriHelp.Database
                 _conn = new SQLiteConnection($"Data Source={DbPath};Version=3;");
                 _conn.Open();
             }
+        }
+
+        public void Dispose()
+        {
+            _conn.Close();
+        }
+
+        public List<InputRowViewModel> LoadInputs()
+        {
+            var inputs = new List<InputRowViewModel>();
+            var selectSql = $"SELECT crop_type, qty_seed, soil_type, qty_nitrate, qty_phosphorus, qty_potassium, qty_microelements FROM {TableName}";
+            var cmd = _conn.CreateCommand();
+            cmd.CommandText = selectSql;
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                inputs.Add(new InputRowViewModel(
+                    reader.GetString(0),
+                    reader.GetDouble(1),
+                    reader.GetString(2),
+                    reader.GetDouble(3),
+                    reader.GetDouble(4),
+                    reader.GetDouble(5),
+                    reader.GetDouble(6)));
+            }
+
+            return inputs;
         }
 
         public void InsertInputs(string cropType, double qtySeed, string soilType, double qtyNitrate, double qtyPhosphorus, double qtyPotassium, double qtyMicroelements)

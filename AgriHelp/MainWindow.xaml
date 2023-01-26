@@ -13,7 +13,37 @@
                 <MenuItem Header="_Adauga inputuri" Click="AddInput"/>
             </MenuItem>
         </Menu>
-        <DataGrid>
+        <DataGrid ItemsSource="{Binding Inputs}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Cultura"
+                    Width="90"
+                    Binding="{Binding Path=CropType, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Samanta kg"
+                    Width="90"
+                    Binding="{Binding Path=SeedQty, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Tip sol"
+                    Width="90"
+                    Binding="{Binding Path=SoilType, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Azot kg"
+                    Width="90"
+                    Binding="{Binding Path=QtyN, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Fosfor kg"
+                    Width="90"
+                    Binding="{Binding Path=QtyP, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Potasiu kg"
+                    Width="90"
+                    Binding="{Binding Path=QtyK, Mode=OneWay}"/>
+                <DataGridTextColumn
+                    Header="Microelemente"
+                    Width="90"
+                    Binding="{Binding Path=QtyMicroelements, Mode=OneWay}"/>
+            </DataGrid.Columns>
         </DataGrid>
     </StackPanel>
 </Window>

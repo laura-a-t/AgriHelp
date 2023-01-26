@@ -15,12 +15,12 @@ namespace AgriHelp
         public MainWindowViewModel ViewModel { get; }
         public MainWindow()
         {
-            InitializeComponent();
-
-            ViewModel = new MainWindowViewModel();
-
             _dbManager = new Manager();
             _dbManager.Init();
+            ViewModel = new MainWindowViewModel(_dbManager.LoadInputs());
+            InitializeComponent();
+
+            Closing += (sender, args) => _dbManager.Dispose();
         }
 
         private void AddInput(object sender, RoutedEventArgs e)
