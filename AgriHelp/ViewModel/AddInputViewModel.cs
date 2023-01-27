@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reactive.Subjects;
 using AgriHelp.Database;
 using DevExpress.Mvvm;
 
@@ -6,7 +8,10 @@ namespace AgriHelp.ViewModel
 {
     public class AddInputViewModel : ViewModelBase
     {
-        private Manager _dbManager;
+        private readonly Manager _dbManager;
+        private readonly Subject<bool> _dataUpdated = new Subject<bool>();
+
+        public IObservable<bool> DataUpdated => _dataUpdated;
         public List<string> AvailableCrops { get; }
 
         private string _selectedCrop;
@@ -83,6 +88,7 @@ namespace AgriHelp.ViewModel
         public void Save()
         {
             _dbManager.InsertInputs(SelectedCrop, SeedQty, SelectedSoilType, QtyN, QtyP, QtyK, QtyMicroelements);
+            _dataUpdated.OnNext(true);
         }
     }
 }

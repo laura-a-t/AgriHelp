@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using AgriHelp.Database;
 using AgriHelp.View;
@@ -33,11 +34,18 @@ namespace AgriHelp
             }
 
             var inputWindow = new AddInputWindow(_dbManager);
+            inputWindow.ViewModel.DataUpdated.Subscribe(RefreshInputs);
             Closing += (o, args) =>
             {
                 inputWindow.Close();
             };
             inputWindow.Show();
+        }
+
+        private void RefreshInputs(bool _)
+        {
+            var inputs = _dbManager.LoadInputs();
+            ViewModel.RefreshInputs(inputs);
         }
     }
 }

@@ -6,11 +6,20 @@ namespace AgriHelp.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        public ObservableCollection<InputRowViewModel> Inputs { get; }
+        public ObservableCollection<InputRowViewModel> Inputs { get; } = new ObservableCollection<InputRowViewModel>();
 
         public MainWindowViewModel(List<InputRowViewModel> inputs)
         {
-            Inputs = new ObservableCollection<InputRowViewModel>(inputs);
+            RefreshInputs(inputs);
+        }
+
+        public void RefreshInputs(List<InputRowViewModel> inputs)
+        {
+            Inputs.Clear();
+            foreach (var input in inputs)
+            {
+                Inputs.Add(input);
+            }
         }
     }
 }
